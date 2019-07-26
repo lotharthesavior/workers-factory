@@ -1,0 +1,1 @@
+{"version":3,"sources":["globals.css"],"names":[],"mappings":"AAAA,KACE,QAAS,CACT,wBACF,CAEA,aACI,qBACJ","file":"main.4e970852.chunk.css","sourcesContent":["body {\n  margin: 0;\n  background-color: rgb(53, 53, 53);\n}\n\n#phaser-game {\n    background-color: #ffffff;\n}\n"]}
