@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Game from "./Game";
-import UI from "./UI";
+import Counter from "./Counter";
 import { Provider } from "react-redux";
 
 import store from "./store";
@@ -15,10 +15,9 @@ class App extends Component {
             alignContent: "center",
             justifyContent: "center",
             flexDirection: "row",
-            height: "100vh"
+            height: "100vh",
           }}
         >
-          <UI />
           <Game />
         </div>
       </Provider>

@@ -1,5 +1,5 @@
 import Phaser from "phaser";
-import ExampleScene from "./scenes/exampleScene";
+import mainScene from "./scenes/mainScene";
 
 import * as React from "react";
 
@@ -14,7 +14,7 @@ export default class IGame extends React.Component<IGameProps, any> {
       width: GAME_WIDTH,
       height: GAME_HEIGHT,
       parent: "phaser-game",
-      scene: [ExampleScene]
+      scene: [mainScene]
     };
 
     new Phaser.Game(config);
@@ -25,6 +25,6 @@ export default class IGame extends React.Component<IGameProps, any> {
   }
 
   public render() {
-    return <div id="phaser-game" />;
+    return <div id="phaser-game" style={{ backgroundColor: "#fff" }} />;
   }
 }

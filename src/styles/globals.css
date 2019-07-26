@@ -2,3 +2,7 @@ body {
   margin: 0;
   background-color: rgb(53, 53, 53);
 }
+
+#phaser-game {
+    background-color: #ffffff;
+}
