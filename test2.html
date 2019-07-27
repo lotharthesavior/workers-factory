@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="phaser-example"></div>
+
+<script>
+  var game = new Phaser.Game(800, 600, Phaser.AUTO, 'phaser-example', { preload: preload, create: create, update: update });
+
+  var scoreText;
+  var timer;
+  var clicks;
+  var clicksPerSecond = 0;
+  var workers = 0;
+  var workerCost = 15;
+  var workerPerSec = 1;
+
+
+  function preload() {
+
+
+    game.load.image('clickBox', 'assets/ClickMe.png');
+    game.load.image('generator1', 'assets/Gen1.png');
+    game.stage.backgroundColor = '#182d3b';
+
+    // If browser tab is displayed, game runs when out of focus. Needs fixing.
+    game.stage.disableVisibilityChange = true;
+
+
+  }
+
+  function create() {
+
+    clicks = 0;
+    button = game.add.button(game.width/2, game.height/2, 'clickBox', upScoreText);
+    btn_buyWorker = game.add.button(30,400, 'generator1', buyWorker);
+
+    scoreText = game.add.text(30, 30, "CLICKS: " + clicks + "   WORKERS: " + workers, {
+      font: "20px Arial",
+      fill: "#ffffff",
+      align: "left"
+
+    });
+
+    button.scale.x = 0.5;
+    button.scale.y = 0.5;
+    button.anchor.setTo(0.5);
+
+    button.inputEnabled = true;
+    btn_buyWorker.inputEnabled = true;
+
+
+
+    timer = game.time.create(false);
+    timer.loop(1000, updateCounter, this)
+    timer.start();﻿
+
+    function updateCounter () {
+
+      clicks += clicksPerSecond;
+
+    }
+
+
+
+  }
+
+  function update () {
+
+    //clicks += workers;
+    scoreText.setText("CLICKS: " + clicks +
+      "\nCLICKS PER SEC: " + clicksPerSecond +
+      "\nWORKERS: " + workers);
+  }
+
+  function upScoreText () {
+
+    clicks++;
+  }
+
+
+  //Need to find a way to disable button if player doesn't have enough clicks to buy it
+  function buyWorker () {
+
+    if (clicks >= 15)
+    {
+      workers++;
+      clicks -= 15;
+      clicksPerSecond += 1;
+    }
+
+  }﻿
+</script>
+</body>
+</html>

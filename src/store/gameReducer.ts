@@ -1,35 +1,38 @@
+import Phaser from "phaser";
+import store from "./index";
+
 export const ADD_PRODUCT = "ADD_PRODUCT";
-export const ADD_TIME = "ADD_TIME";
-export const UPDATE_WORKER_WORK = "UPDATE_WORKER_WORK";
 export const ADD_WORKER = "ADD_WORKER";
 
 class Worker {
-  constructor(public speed: number) {}
+  constructor(public speed: number, public timer: Phaser.Time.TimerEvent) {}
 }
 
+// BEGIN: handle initial in storage
+
+const existentState = localStorage.getItem('state');
+var loadedState;
+if (existentState !== null) {
+  loadedState = JSON.parse(existentState);
+} else {
+  loadedState = {
+    count: 0,
+    workers: []
+  }
+}
+
+// END: handle initial in storage
+
 const initState: {
-  time: integer,
-  last_update_time: integer,
   count: integer,
   workers: Worker[]
-} = {
-  time: 0,
-  last_update_time: 0,
-  count: 0,
-  workers: []
-};
+} = loadedState;
 
 export const addProduct = () => ({
   type: ADD_PRODUCT
 });
-export const addTime = () => ({
-  type: ADD_TIME
-});
 export const addWorker = () => ({
   type: ADD_WORKER
-});
-export const updateWorkerWork = () => ({
-  type: UPDATE_WORKER_WORK
 });
 
 export const gameReducer = (
@@ -42,35 +45,10 @@ export const gameReducer = (
     case ADD_PRODUCT:
       return { ...state, count: state.count + 1 };
 
-    case ADD_TIME:
-      return { ...state, time: state.time + 1 };
-
     case ADD_WORKER:
       var workersCollection = state.workers;
-      workersCollection.push(new Worker(0.5));
-      console.log(workersCollection);
-      return { ...state, workers: workersCollection };
-
-    case UPDATE_WORKER_WORK:
-      let seconds = Math.round(state.time / 100);
-      // console.log("seconds: " + seconds);
-      // console.log("last_update_time: " + state.last_update_time);
-      let time_elapsed = seconds - state.last_update_time;
-      // console.log("time_elapsed: " + time_elapsed);
-      if (time_elapsed === 0) {
-        return state;
-      }
-
-      var workersSpeedSum = state.workers
-        .map(worker => worker.speed)
-        .reduce(function(total, num){
-            return total + num
-        });
-      return {
-        ...state,
-        count: state.count + workersSpeedSum,
-        last_update_time: seconds
-      };
+      workersCollection.push(new Worker(0.5, null));
+      return state;
 
     default:
       return state;

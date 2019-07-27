@@ -14,6 +14,7 @@ export default class IGame extends React.Component<IGameProps, any> {
       width: GAME_WIDTH,
       height: GAME_HEIGHT,
       parent: "phaser-game",
+      backgroundColor: '#2d2d2d',
       scene: [mainScene]
     };
 
