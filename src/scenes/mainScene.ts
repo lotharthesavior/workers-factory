@@ -74,7 +74,7 @@ export default class mainScene extends Scene {
 
     // BEGIN: workers
 
-    store.subscribe(this.giveTimerToWorkers);
+    store.subscribe(() => this.giveTimerToWorkers());
     this.giveTimerToWorkers();
 
     graphics = this.add.graphics({ x: 202, y: 120 });
