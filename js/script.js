@@ -202,7 +202,7 @@ function get_base_model_from_worker_name(name) {
 }
 
 function update_ui() {
-  document.querySelector('#products .count').innerHTML = main_model.clicked_products;
+  document.querySelector('#products .count').innerHTML = main_model.clicked_products.toFixed(0);
   document.querySelector('#products-per-second .count').innerHTML = main_model.earnings.toFixed(1);
   // document.querySelector('#workers .count').innerHTML = main_model.workers.length;
 }
