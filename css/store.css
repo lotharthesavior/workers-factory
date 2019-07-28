@@ -1,0 +1,89 @@
+
+.ads-layer-1 {
+    border: 8px solid #4a933d;
+}
+
+.ads-layer-2 {
+    border: 8px solid #b3241f;
+}
+
+.ads-layer-3 {
+    border: 8px solid #f08432;
+}
+
+#ads-1 {
+    background-color: #84227d;
+    color: #e7b240;
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 72px 24px;
+    text-align: center;
+}
+
+/* --- store --- */
+
+#store #store-title:before {
+    content: "";
+    display: block;
+    width: 180px;
+    height: 34px;
+    background-color: #84227d;
+    margin: 0 auto;
+    margin-top: 30px;
+    margin-bottom: -44px;
+}
+
+#store #store-title {
+    text-shadow: -4px 4px 0px #489f8d;
+    font-size: 60px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    margin-top: -10px;
+    text-align: center;
+    color: #74f34d;
+}
+
+#store #workers {
+    background-color: #4a933d;
+    padding: 10px;
+}
+
+.store-button-layer-1 {
+    border: 2px solid #e7b240;
+    padding: 15px;
+}
+
+.store-button-layer-2 {
+    border: 8px solid #e7b240;
+}
+
+#store-add-cursor {
+    background-color: #51b387;
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 10px;
+}
+
+#store-add-cursor a {
+    cursor: pointer;
+    display: grid;
+    grid-template:
+            "a b" 40px / 1fr 9fr;
+    grid-gap: 10px;
+}
+
+#store-add-cursor a span {
+    grid-area: b;
+}
+
+#store-add-cursor a i {
+    grid-area: a;
+}
+
+#store-add-cursor,
+#store-add-cursor a {
+    color: #fff;
+    text-decoration: none;
+}
