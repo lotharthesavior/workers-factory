@@ -14,8 +14,8 @@
     <!-- font-awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <!-- odometer -->
-    <link rel="stylesheet" href="libs/odometer/themes/odometer-theme-default.css" />
-    <script type="text/javascript" src="libs/odometer/odometer.js"></script>
+    <link rel="stylesheet" href="libs/odometerjs/themes/odometer-theme-default.css" />
+    <script type="text/javascript" src="libs/odometerjs/odometer.js"></script>
 
 </head>
 <body onload="start()">

@@ -146,7 +146,7 @@ function sort_assets() {
       itemsArr.push(items[i]);
     }
   }
-  
+
   itemsArr.sort(function(a, b) {
     var a_name = a.getAttribute('id').split('_')[1];
     var a_earning = get_base_model_from_worker_name(a_name).speed;
