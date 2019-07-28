@@ -32,14 +32,16 @@
 
 #wallet #products {
     color: #84227d;
-    font-size: 20px;
+    font-size: 24px;
     font-weight: 700;
 }
 
 #wallet #products-per-second {
     color: #84227d;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 700;
+    text-transform: uppercase;
+    margin-top: 5px;
 }
 
 #wallet #add-product-button {
