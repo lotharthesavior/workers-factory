@@ -23,6 +23,7 @@ body {
             "a b c"
             "a b c"
             "a b c" / 1fr 1fr 1fr;
+    grid-auto-rows: 1fr;
 }
 #assets {
     grid-area: a;
