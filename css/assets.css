@@ -83,7 +83,7 @@
 
     display: grid;
     grid-template:
-            "a b" 40px / 9fr 1fr;
+            "a b" / 9fr 1fr;
 }
 
 #assets #workers .layer-2 .list {

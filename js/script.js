@@ -261,9 +261,11 @@ function _update_ui() {
     base_mining_space_station_model
   ];
   document.querySelector('.store-button-layer-1').classList.remove('active');
-  base_models_list.forEach(function(current_base_model){
+  base_models_list.some(function(current_base_model){
     if (main_model.clicked_products >= current_base_model.cost) {
       document.querySelector('.store-button-layer-1-' + current_base_model.name).classList.add('active');
+    } else {
+      return true;
     }
   });
 }
