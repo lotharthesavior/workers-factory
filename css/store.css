@@ -53,6 +53,11 @@
     border: 2px solid #e7b240;
     padding: 15px;
     min-height: 19px;
+    display: none;
+}
+
+.store-button-layer-1.active {
+    display: block;
 }
 
 .store-button-layer-2 {
@@ -74,7 +79,7 @@
     min-height: 19px;
     line-height: 19px;
     grid-template:
-        "a b" 
+        "a b"
         "c d" / 1fr 9fr;
     grid-gap: 10px;
 }

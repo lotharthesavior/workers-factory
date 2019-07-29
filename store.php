@@ -69,7 +69,7 @@
 
 	foreach ($workers as $worker => $data) { ?>
 
-		<div class="store-button-layer-1">
+		<div class="store-button-layer-1 store-button-layer-1-<?php echo $worker; ?>">
 			<div class="store-button-layer-2">
 				<div class="store-add-worker">
           <a onclick="add_worker('<?php echo $worker; ?>')">
