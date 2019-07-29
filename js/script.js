@@ -249,6 +249,7 @@ function _update_ui() {
   // products per second count
   document.querySelector('#products-per-second .count').innerHTML = main_model.earnings.toFixed(1);
   // update store availability
+  document.querySelector('.store-button-layer-1').classList.remove('active');
   var base_models_list = [
     base_cursor_model,
     base_intern_model,
@@ -260,7 +261,6 @@ function _update_ui() {
     base_university_model,
     base_mining_space_station_model
   ];
-  document.querySelector('.store-button-layer-1').classList.remove('active');
   base_models_list.some(function(current_base_model){
     if (main_model.clicked_products >= current_base_model.cost) {
       document.querySelector('.store-button-layer-1-' + current_base_model.name).classList.add('active');
