@@ -60,7 +60,7 @@
     min-height: 19px;
 }
 
-#store-add-cursor {
+.store-add-worker {
     background-color: #51b387;
     font-size: 18px;
     font-weight: 700;
@@ -68,30 +68,43 @@
     padding: 10px;
 }
 
-#store-add-cursor a {
+.store-add-worker a {
     cursor: pointer;
     display: grid;
     min-height: 19px;
     line-height: 19px;
     grid-template:
-            "a b" / 1fr 9fr;
+        "a b" 
+        "c d" / 1fr 9fr;
     grid-gap: 10px;
 }
 
-#store-add-cursor a span {
-    grid-area: b;
-    min-height: 19px;
-    line-height: 19px;
-}
-
-#store-add-cursor a i {
+.store-add-worker a .worker-icon {
     grid-area: a;
     min-height: 19px;
     line-height: 19px;
 }
 
-#store-add-cursor,
-#store-add-cursor a {
+.store-add-worker a .worker-name {
+    grid-area: b;
+    min-height: 19px;
+    line-height: 19px;
+}
+
+.store-add-worker a .cost-space {
+    grid-area: c;
+    min-height: 19px;
+    line-height: 19px;
+}
+
+.store-add-worker a .cost-icon {
+    grid-area: d;
+    min-height: 19px;
+    line-height: 19px;
+}
+
+.store-add-workerr,
+.store-add-worker a {
     color: #fff;
     text-decoration: none;
 }
