@@ -14,8 +14,12 @@
     <!-- font-awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <!-- odometer -->
-<!--    <link rel="stylesheet" href="libs/odometerjs/themes/odometer-theme-default.css" />-->
-<!--    <script type="text/javascript" src="libs/odometerjs/odometer.js"></script>-->
+    <?php /*
+    <link rel="stylesheet" href="libs/odometerjs/themes/odometer-theme-default.css" />
+    <script type="text/javascript" src="libs/odometerjs/odometer.js"></script>
+    */ ?>
+    <!-- Lettering -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lettering.js/0.7.0/jquery.lettering.js"></script>
 
 </head>
 <body onload="start()">
@@ -32,7 +36,8 @@
 <script src="js/base_models.js"></script>
 <script src="js/global_variables.js"></script>
 <script src="js/script.js"></script>
-<script src="js/odometer.js"></script>
+<?php /* <script src="js/odometer.js"></script> */ ?>
+<script src="js/commarize.js"></script>
 
 </body>
 </html>

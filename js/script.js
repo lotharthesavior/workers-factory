@@ -245,7 +245,7 @@ function _get_base_model_from_worker_name(name) {
 
 function _update_ui() {
   // products count
-  document.querySelector('#products .count').innerHTML = main_model.clicked_products.toFixed(0);
+  document.querySelector('#products .count').innerHTML = main_model.clicked_products.toFixed(0).commarize();
   // products per second count
   document.querySelector('#products-per-second .count').innerHTML = main_model.earnings.toFixed(1);
   // update store availability
