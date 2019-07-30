@@ -17,10 +17,11 @@ function commarize(min) {
     var order = Math.floor(Math.log(this) / Math.log(1000));
 
     var unitname = units[(order - 1)];
-    var num = Math.floor(this / 1000 ** order);
+    // var num = Math.floor(this / 1000 ** order);
+    var num = this / 1000 ** order;
 
     // output number remainder + unitname
-    return num + unitname
+    return num.toFixed(3) + unitname
   }
 
   // return formatted original number
