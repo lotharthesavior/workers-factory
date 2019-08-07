@@ -161,7 +161,7 @@ function _prepare_running_intervals() {
  */
 function _prepare_workers() {
   main_model.workers.forEach(function(worker) {
-    _add_worker_earnings(worker);
+    // _add_worker_earnings(worker);
     _add_worker_to_assets(worker);
     _update_workers_prices(worker);
   });
