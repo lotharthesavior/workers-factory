@@ -23,7 +23,7 @@
 		'employee'             => [
       'icon'    => '<i class="fas fa-user-tie"></i>',
       'earning' => '0.5/s',
-		  'cost'    => 1500,
+		  'cost'    => 4500,
     ],
 		'real_state'           => [
       'icon'    => '<i class="fas fa-horse-head"></i>',
