@@ -65,8 +65,12 @@
     min-height: 19px;
 }
 
-.store-add-worker {
+.color .store-add-worker {
     background-color: #51b387;
+}
+
+.store-add-worker {
+    background-color: rgb(151, 151, 151);
     font-size: 18px;
     font-weight: 700;
     text-transform: uppercase;

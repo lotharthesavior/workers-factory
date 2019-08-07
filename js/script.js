@@ -3,6 +3,18 @@
    PUBLIC FUNCTIONS
    ------------------------------------------------ */
 
+var base_models_list = [
+  base_cursor_model,
+  base_intern_model,
+  base_employee_model,
+  base_real_state_model,
+  base_companies_model,
+  base_factory_model,
+  base_bank_model,
+  base_university_model,
+  base_mining_space_station_model
+];
+
 function start() {
   var stored_main_model = localStorage.getItem(MAIN_MODEL_KEY);
   if (stored_main_model === null) {
@@ -11,7 +23,20 @@ function start() {
   } else {
     main_model = JSON.parse(stored_main_model);
   }
-  _update_ui();
+
+  _clear_store_active_state();
+
+  document.dispatchEvent(new CustomEvent(
+    UPDATE_PRODUCTS_EVENT_KEY,
+    {
+      detail: {
+        count: main_model.clicked_products,
+      },
+      bubbles: true,
+      cancelable: true
+    }
+  ));
+
   _prepare_workers();
   _prepare_running_intervals();
 }
@@ -61,9 +86,16 @@ function add_worker(worker) {
     return
   }
 
-  _debit_workers_cost(new_worker);
-
-  _proceed_adding_worker(new_worker);
+  document.dispatchEvent(new CustomEvent(
+    ADD_WORKER_EVENT_KEY,
+    {
+      detail: {
+        worker: new_worker,
+      },
+      bubbles: true,
+      cancelable: true
+    }
+  ));
 }
 
 /**
@@ -81,14 +113,42 @@ function _debit_workers_cost(worker) {
 /**
  * Add 1 product
  */
-function add_product() {
+function add_single_product() {
   main_model.clicked_products++;
-  _update_ui();
+
+  document.dispatchEvent(new CustomEvent(
+    UPDATE_PRODUCTS_EVENT_KEY,
+    {
+      detail: {
+        count: main_model.clicked_products,
+      },
+      bubbles: true,
+      cancelable: true
+    }
+  ));
 }
 
 /* ------------------------------------------------
    PRIVATE FUNCTIONS
    ------------------------------------------------ */
+
+/**
+ * Add add products in blocks of earnings
+ */
+function _add_products() {
+  main_model.clicked_products = main_model.clicked_products + main_model.earnings;
+
+  document.dispatchEvent(new CustomEvent(
+    UPDATE_PRODUCTS_EVENT_KEY,
+    {
+      detail: {
+        count: main_model.clicked_products,
+      },
+      bubbles: true,
+      cancelable: true
+    }
+  ));
+}
 
 /**
  * The main intervals for the application are declared here.
@@ -105,6 +165,7 @@ function _prepare_workers() {
   main_model.workers.forEach(function(worker) {
     _add_worker_earnings(worker);
     _add_worker_to_assets(worker);
+    _update_workers_prices(worker);
   });
   _sort_assets();
 }
@@ -113,21 +174,12 @@ function _add_worker_earnings(worker) {
   main_model.earnings = main_model.earnings + worker.speed;
 }
 
-/**
- * Add add products in blocks of earnings
- */
-function _add_products() {
-  main_model.clicked_products = main_model.clicked_products + main_model.earnings;
-  _update_ui();
-}
-
 function _proceed_adding_worker(new_worker) {
   new_worker.created_at = _get_seconds_from_miliseconds((new Date).getTime());
   main_model.workers.push(new_worker);
   _add_worker_earnings(new_worker);
   _add_worker_to_assets(new_worker);
   _sort_assets();
-  _update_ui();
 }
 
 function _add_worker_to_assets(new_worker) {
@@ -243,30 +295,73 @@ function _get_base_model_from_worker_name(name) {
   }
 }
 
-function _update_ui() {
-  // products count
-  document.querySelector('#products .count').innerHTML = main_model.clicked_products.toFixed(0).commarize();
-  // products per second count
-  document.querySelector('#products-per-second .count').innerHTML = main_model.earnings.toFixed(1);
-  // update store availability
-  document.querySelector('.store-button-layer-1').classList.remove('active');
-  var base_models_list = [
-    base_cursor_model,
-    base_intern_model,
-    base_employee_model,
-    base_real_state_model,
-    base_companies_model,
-    base_factory_model,
-    base_bank_model,
-    base_university_model,
-    base_mining_space_station_model
-  ];
-  base_models_list.some(function(current_base_model){
+/**
+ * Update Wallet Count
+ * @private
+ * @param count
+ */
+function _update_wallet_count(count) {
+  document.querySelector('#products .count').innerHTML = count.toFixed(0).commarize();
+}
+
+/**
+ * Update Workers Prices
+ * @private
+ */
+function _update_workers_at_store(){
+  _deactivate_all_store_items();
+  base_models_list.forEach(function(current_base_model){
     if (main_model.clicked_products >= current_base_model.cost) {
-      document.querySelector('.store-button-layer-1-' + current_base_model.name).classList.add('active');
-    } else {
-      return true;
+      if ([].slice.call(document.querySelector('.store-button-layer-1-' + current_base_model.name).classList).indexOf('active') === -1) {
+        document.querySelector('.store-button-layer-1-' + current_base_model.name).classList.add('active');
+      }
+      document.querySelector('.store-button-layer-1-' + current_base_model.name).classList.add('color');
+    } else if (main_model.clicked_products < current_base_model.cost){
+      document.querySelector('.store-button-layer-1-' + current_base_model.name).classList.remove('color');
     }
+  });
+}
+
+/**
+ * Update Earnings per second count
+ *
+ * @private
+ */
+function _update_earnings_per_second() {
+  document.querySelector('#products-per-second .count').innerHTML = main_model.earnings.toFixed(1);
+}
+
+function _clear_store_active_state() {
+  document.querySelector('.store-button-layer-1').classList.remove('active');
+}
+
+function _deactivate_all_store_items() {
+  document.querySelector('.store-button-layer-1').classList.remove('color');
+}
+
+function _update_workers_prices(new_worker){
+  // update workers registers
+  main_model.workers.filter(function(worker){
+    return worker.name === new_worker.name;
+  }).forEach(function(worker){
+    worker.cost = worker.cost + Math.round(worker.cost * INCREASE_COST_PER_ITEM_PURCHASED);
+  });
+
+  // update store elements
+  base_models_list.filter(function(worker){
+    return worker.name === new_worker.name;
+  }).forEach(function(worker){
+    worker.cost = parseInt(worker.cost + (worker.cost * INCREASE_COST_PER_ITEM_PURCHASED));
+    document.dispatchEvent(new CustomEvent(
+      CHANGE_WORKERS_PRICE_EVENT_KEY,
+      {
+        detail: {
+          worker: worker,
+        },
+        bubbles: true,
+        cancelable: true
+      }
+    ));
   });
 }
 
@@ -281,3 +376,30 @@ function _get_seconds_from_miliseconds(miliseconds) {
 }
 
 // END: helpers
+
+// BEGIN: event listeners
+
+document.addEventListener(UPDATE_PRODUCTS_EVENT_KEY, function(e){
+  _update_wallet_count(e.detail.count);
+  _update_workers_at_store();
+}, false);
+
+document.addEventListener(ADD_WORKER_EVENT_KEY, function(e){
+  _debit_workers_cost(e.detail.worker);
+  _proceed_adding_worker(e.detail.worker);
+  _update_earnings_per_second(e.detail.worker);
+  _update_workers_prices(e.detail.worker);
+  _update_workers_at_store();
+}, false);
+
+document.addEventListener(CHANGE_WORKERS_PRICE_EVENT_KEY, function(e){
+  [].slice.call(document.getElementsByClassName('cost-element')).forEach(function(store_element){
+    var workers_name = store_element.getAttribute('workersname');
+    if (e.detail.worker.name === workers_name) {
+      store_element.innerHTML = e.detail.worker.cost;
+    }
+  });
+}, false);
+
+// END: event listeners
+

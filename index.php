@@ -19,7 +19,7 @@
     <script type="text/javascript" src="libs/odometerjs/odometer.js"></script>
     */ ?>
     <!-- Lettering -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lettering.js/0.7.0/jquery.lettering.js"></script>
+<!--    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lettering.js/0.7.0/jquery.lettering.js"></script>-->
 
 </head>
 <body onload="start()">
@@ -32,6 +32,7 @@
 
 </div>
 
+<script src="js/events.js"></script>
 <script src="js/constants.js"></script>
 <script src="js/base_models.js"></script>
 <script src="js/global_variables.js"></script>

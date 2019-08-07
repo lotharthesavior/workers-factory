@@ -23,7 +23,7 @@ var base_cursor_model = Object.assign(
     name: 'cursor',
     speed: 0.1,
     interval: 9000,
-    cost: 15
+    cost: 40
   }
 );
 var base_intern_model = Object.assign(
@@ -33,7 +33,7 @@ var base_intern_model = Object.assign(
     name: 'intern',
     speed: 0.3,
     interval: 7000,
-    cost: 40
+    cost: 500
   }
 );
 var base_employee_model = Object.assign(
@@ -43,7 +43,7 @@ var base_employee_model = Object.assign(
     name: 'employee',
     speed: 0.5,
     interval: 5000,
-    cost: 100
+    cost: 1500
   }
 );
 var base_real_state_model = Object.assign(
@@ -53,7 +53,7 @@ var base_real_state_model = Object.assign(
     name: 'real_state',
     speed: 1,
     interval: 1000,
-    cost: 1100
+    cost: 50100
   }
 );
 var base_companies_model = Object.assign(
@@ -63,7 +63,7 @@ var base_companies_model = Object.assign(
     name: 'companies',
     speed: 3,
     interval: 300,
-    cost: 5700
+    cost: 500700
   }
 );
 // TODO: wife worker is a special type, it duplicates all the gains
@@ -75,7 +75,7 @@ var base_factory_model = Object.assign(
     name: 'factory',
     speed: 10,
     interval: 100,
-    cost: 45400
+    cost: 1450400
   }
 );
 var base_bank_model = Object.assign(
@@ -85,7 +85,7 @@ var base_bank_model = Object.assign(
     name: 'bank',
     speed: 50,
     interval: 20,
-    cost: 150900
+    cost: 15000900
   }
 );
 var base_university_model = Object.assign(
@@ -95,7 +95,7 @@ var base_university_model = Object.assign(
     name: 'university',
     speed: 100,
     interval: 10,
-    cost: 560000
+    cost: 500560000
   }
 );
 var base_mining_space_station_model = Object.assign(
@@ -105,7 +105,7 @@ var base_mining_space_station_model = Object.assign(
     name: 'mining_space_station',
     speed: 200,
     interval: 5,
-    cost: 1700600
+    cost: 50000000000000
   }
 );
 

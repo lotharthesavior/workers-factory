@@ -4,6 +4,7 @@ const MAIN_MODEL_KEY = 'main_model';
 const EARNINGS_INTERVAL_KEY = 'earnings_interval';
 const AUTOSAVE_INTERVAL_KEY = 'autosave_interval';
 const AUTOSAVE_INTERVAL = 2000;
+const INCREASE_COST_PER_ITEM_PURCHASED = 0.3; // 30%
 
 const WORKERS_STORE = [];
 WORKERS_STORE['cursor'] = {
