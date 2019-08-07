@@ -43,7 +43,7 @@ var base_employee_model = Object.assign(
     name: 'employee',
     speed: 0.5,
     interval: 5000,
-    cost: 1500
+    cost: 4500
   }
 );
 var base_real_state_model = Object.assign(
