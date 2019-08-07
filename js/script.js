@@ -34,7 +34,7 @@ function start() {
       cancelable: true
     }
   ));
-
+  _update_earnings_per_second();
   _prepare_workers();
   _prepare_running_intervals();
 }
@@ -299,7 +299,11 @@ function _get_base_model_from_worker_name(name) {
  * @param count
  */
 function _update_wallet_count(count) {
-  document.querySelector('#products .count').innerHTML = count.toFixed(0).commarize();
+  if (count < 1000) {
+    document.querySelector('#products .count').innerHTML = count.toFixed(1);
+  } else {
+    document.querySelector('#products .count').innerHTML = count.toFixed(0).commarize();
+  }
 }
 
 /**
@@ -381,7 +385,7 @@ document.addEventListener(UPDATE_PRODUCTS_EVENT_KEY, function(e){
 document.addEventListener(ADD_WORKER_EVENT_KEY, function(e){
   _debit_workers_cost(e.detail.worker);
   _proceed_adding_worker(e.detail.worker);
-  _update_earnings_per_second(e.detail.worker);
+  _update_earnings_per_second();
   _update_workers_prices(e.detail.worker);
   _update_workers_at_store();
 }, false);

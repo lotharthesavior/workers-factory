@@ -13,33 +13,33 @@
 		'cursor'               => [
       'icon'    => '<i class="fas fa-hand-pointer"></i>',
       'earning' => '0.1/s',
-      'cost'    => 15,
+      'cost'    => 40,
     ],
 		'intern'               => [
       'icon'    => '<i class="fas fa-male"></i>',
       'earning' => '0.3/s',
-		  'cost'    => 40,
+		  'cost'    => 500,
     ],
 		'employee'             => [
       'icon'    => '<i class="fas fa-user-tie"></i>',
       'earning' => '0.5/s',
-		  'cost'    => 500,
+		  'cost'    => 1500,
     ],
 		'real_state'           => [
       'icon'    => '<i class="fas fa-horse-head"></i>',
       'earning' => '1/s',
-		  'cost'    => 1500,
+		  'cost'    => 50100,
     ],
 		'companies'            => [
       'icon'    => '<i class="fas fa-building"></i>',
       'earning' => '3/s',
-		  'cost'    => 50100,
-    ],
-		'wife'                 => [
-      'icon'    => '<i class="fas fa-ring"></i>',
-      'earning' => '...',
 		  'cost'    => 500700,
     ],
+//		'wife'                 => [
+//      'icon'    => '<i class="fas fa-ring"></i>',
+//      'earning' => '...',
+//		  'cost'    => 500700,
+//    ],
 		'factory'              => [
       'icon'    => '<i class="fas fa-industry"></i>',
       'earning' => '10/s',
