@@ -24,8 +24,6 @@ function start() {
     main_model = JSON.parse(stored_main_model);
   }
 
-  _clear_store_active_state();
-
   document.dispatchEvent(new CustomEvent(
     UPDATE_PRODUCTS_EVENT_KEY,
     {
@@ -329,10 +327,6 @@ function _update_workers_at_store(){
  */
 function _update_earnings_per_second() {
   document.querySelector('#products-per-second .count').innerHTML = main_model.earnings.toFixed(1);
-}
-
-function _clear_store_active_state() {
-  document.querySelector('.store-button-layer-1').classList.remove('active');
 }
 
 function _deactivate_all_store_items() {
