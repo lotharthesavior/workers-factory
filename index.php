@@ -26,6 +26,7 @@
 
 <div class="container">
 
+  <?php include "base_models.php"; ?>
   <?php include "assets.php"; ?>
   <?php include "wallet.php"; ?>
   <?php include "store.php"; ?>
@@ -34,7 +35,6 @@
 
 <script src="js/events.js"></script>
 <script src="js/constants.js"></script>
-<script src="js/base_models.js"></script>
 <script src="js/global_variables.js"></script>
 <script src="js/script.js"></script>
 <?php /* <script src="js/odometer.js"></script> */ ?>
